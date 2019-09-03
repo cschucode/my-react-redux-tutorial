@@ -16,3 +16,11 @@ There are a few different ways to get started with React and Redux. The `create-
 Let's begin by creating a directory called `react-redux-tutorial` and navigate into that directory to start coding.
 
 `$ mkdir react-redux-tutorial && cd react-redux-tutorial`
+
+Create a directory for holding the file structure.
+
+`$ mkdir -p src`
+
+Run the following command and follow the prompts to create and initialize your `package.json` file.
+
+`$ yarn init`
