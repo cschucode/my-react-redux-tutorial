@@ -11,9 +11,9 @@ You can use Redux together with React, or with any other view library. It is tin
 
 ## Getting Started
 
-There are a few different ways to get started with React and Redux. The `create-react-app` is a popular choice and let's you get started quickly without any configuration. However, for this tutorial we’ll create a very simple app with our own webpack, babel, and react setup. After that, we’ll be able to connect redux as our source of truth for state management.
+There are a few different ways to get started with React and Redux. The **create-react-app** is a popular choice and let's you get started quickly without any configuration. However, for this tutorial we’ll create a very simple app with our own webpack, babel, and react setup. After that, we’ll be able to connect redux as our source of truth for state management.
 
-Let's begin by creating a directory called `react-redux-tutorial` and navigate into that directory to start coding.
+Let's begin by creating a directory called **react-redux-tutorial** and navigate into that directory to start coding.
 
 `$ mkdir react-redux-tutorial && cd react-redux-tutorial`
 
@@ -21,6 +21,6 @@ Create a directory for holding the file structure.
 
 `$ mkdir -p src`
 
-Run the following command and follow the prompts to create and initialize your `package.json` file.
+Run the following command and follow the prompts to create and initialize your **package.json** file.
 
 `$ yarn init`
