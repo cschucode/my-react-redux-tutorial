@@ -1,4 +1,4 @@
-# My React Redux Tutorial
+# My Redux with React Tutorial
 A walkthrough to build a simple React app using Redux
 
 ## What is Redux
@@ -24,3 +24,21 @@ Create a directory for holding the file structure.
 Run the following command and follow the prompts to create and initialize your **package.json** file.
 
 `$ yarn init`
+
+## Setting Up Webpack
+
+We'll use webpack and it's configurable capabilities to bundle our app into a **dist** directory for deployment. Webpack injests raw React components for producting JavaScript code that (almost) every browser can understand.
+
+Install the webpack package dependencies;
+
+`$ yarn add webpack webpack-cli --dev`
+
+Then, add the `webpack` command to your **package.json** file.
+
+### package.json
+
+```
+"scripts": {
+  "build": "webpack --mode production"
+}
+```
