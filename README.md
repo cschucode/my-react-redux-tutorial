@@ -42,3 +42,43 @@ Then, add the `webpack` command to your **package.json** file.
   "build": "webpack --mode production"
 }
 ```
+
+## Babel On
+
+Babel is used to transform ES6 code into JavaScript code that can be understood by older browsers. This process is called transpiling. Webpack uses the babel-loader which is dependent on the Babel library. Babel is then configured to use presets.
+
+The two presets we will use for this project are **@babel/preset-env** and **@babel/preset-react**. Let's being by pulling in our Babel dependencies.
+
+`$ yarn add @babel/core babel-loader @babel/preset-env @babel/preset-react --dev`
+
+Now, we configure Babel in the **babel.rc** file.
+
+```
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+```
+
+At this point, we're ready to configure webpack using our fancy new `babel-loader`.
+
+**webpack.config.js**
+
+```
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      }
+    ]
+  }
+}
+```
+
+This configuration runs every file ending in 'js' or 'jsx' through the `babel-loader` for transorming ES6 down to ES5.
+
+On to Redux!
