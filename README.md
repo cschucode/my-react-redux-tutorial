@@ -82,3 +82,39 @@ module.exports = {
 This configuration runs every file ending in **.js** or **.jsx** through the `babel-loader` for transorming ES6 down to ES5.
 
 On to Redux!
+
+## To Redux Or Not To Redux
+
+This is a very common question, "How do you know when you're ready to use Redux in your application?" Redux offers quite a few conveniences to JavaScript developers including debugging, action replaying, and much more. However, the following principles are a good place to start when considering to use Redux.
+
+- Multiple React components need to access the same state but do not have any parent/child relationship
+- You start to feel awkward passing down the state to multiple components with props.
+
+For this tutorial, the question has already been answered. We're using Redux so let's add the Redux library and begin to familiarize ourself with the different parts and how they're glued together.
+
+`$ yarn add redux --dev`
+
+## The Store
+
+The store orchestrates all the moving parts in Redux. The state of the entire application lives in the store.
+
+Create a directory for the Store
+
+`$ mkdir -p src/js/store`
+
+And then create a file called **index.js** inside of this directory.
+
+`$ touch src/js/store/index.js`
+
+**index.js**
+
+```
+import { createStore } from "redux";
+import rootReducer from "../reducers/index";
+
+const store = createStore(rootReducer);
+
+export default store;
+```
+
+As you can see, the store is a result of **createStore()** which is a function in the Redux library. It takes a reducer as it's first argument. Very important to note here that reducers produce the state of the application.
