@@ -139,7 +139,7 @@ const initialState = {
   relapses: [],
 };
 
-const rootReducer = (state = initialState, action) {
+function rootReducer (state = initialState, action) {
   return state;
 };
 
@@ -184,3 +184,33 @@ Because type value is a string and is common to typos and duplicates, we declare
 The Reducer calculates the next state depending on the action type. It should also return the initial state when no action type matches. Switch statements are commonly used for handling action types and returning the appropriate
 
 When the action type matches a valid clause the reducer calculates the next state and returns a new object.
+
+## Time to Refactor Our Reducer
+
+Open up **src/reducers/index.js** and update it as follows:
+
+```
+import { ADD_RELAPSE_DATE } from '../actions/index';
+
+const initialState = {
+  timeSober: null,
+  relapses: [],
+};
+
+function rootReducer(state = initialState, action) {
+  const type = action type;
+
+  switch(type) {
+    case type === ADD_RELAPSE_DATE:
+      return Object.assign({}, state, {
+          relapses: state.relapse.concat(action.payload),
+        });
+    default:
+      return state;
+  }
+}
+
+export default rootReducer;
+```
+
+**Redux protip:** the reducer will grow as your app will become bigger. You can split a big reducer into separate functions and combine them with **combineReducers**.
