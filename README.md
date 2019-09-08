@@ -100,11 +100,11 @@ The store orchestrates all the moving parts in Redux. The state of the entire ap
 
 Create a directory for the Store
 
-`$ mkdir -p src/js/store`
+`$ mkdir -p src/store`
 
 And then create a file called **index.js** inside of this directory.
 
-`$ touch src/js/store/index.js`
+`$ touch src/store/index.js`
 
 **index.js**
 
@@ -118,3 +118,32 @@ export default store;
 ```
 
 As you can see, the store is a result of **createStore()** which is a function in the Redux library. It takes a reducer as it's first argument. Very important to note here that reducers produce the state of the application.
+
+## What's a Reducer?
+
+A Reducer is a JavaScript function that takes two parameters, the current state of the application and an Action. In our example, we'll be creating a simple reducer taking the initial state as the first parameter. The second parameter will our Action.
+
+First create a directory for our **rootReducer**
+
+`$ mkdir -p src/reducers`
+
+Then create our **index.js** file inside of this directory.
+
+`$ touch src/reducers/index.js`
+
+**index.js**
+
+```
+const initialState = {
+  timeSober: null,
+  relapses: [],
+};
+
+const rootReducer = (state = initialState, action) {
+  return state;
+};
+
+export default rootReducer;
+```
+
+This Reducer doesn't do anything yet but return the initial state. We'll return to refactor that soon to implement our Actions. **Spoiler Alert**... Actions are next.
