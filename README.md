@@ -79,6 +79,6 @@ module.exports = {
 }
 ```
 
-This configuration runs every file ending in 'js' or 'jsx' through the `babel-loader` for transorming ES6 down to ES5.
+This configuration runs every file ending in **.js** or **.jsx** through the `babel-loader` for transorming ES6 down to ES5.
 
 On to Redux!
