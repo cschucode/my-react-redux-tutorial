@@ -147,3 +147,29 @@ export default rootReducer;
 ```
 
 This Reducer doesn't do anything yet but return the initial state. We'll return to refactor that soon to implement our Actions. **Spoiler Alert**... Actions are next.
+
+## Ready.. Set.. Actions!
+
+While the Store is where the state of the application lives and Reducers are what produce the state of the application, Actions our the signal to the Reducer on how to change state. Actions are simple JavaScript objects. Every action must contain a type property for describing how the state should change. They can also have a payload which is data needed for modifying the state.
+
+It's important to note that when an action gets **dispatched** the Reducer doesn't change the original state, but rather returns a copy of the state with the changes. It's also a best practice to wrap actions in functions called an **action creator**.
+
+Create a directory for our Actions.
+
+`$ mkdir -p src/actions`
+
+Then create a file for our Actions.
+
+`$ touch src/actions/index.js`
+
+**index.js**
+
+```
+export const ADD_RELAPSE_DATE = 'ADD_RELAPSE_DATE';
+
+export function addRelapseDate(payload) {
+  return { type: ADD_RELAPSE_DATE, payload.date };
+};
+```
+
+Because type value is a string and is common to typos and duplicates, we declare our action type as the constant variable `ADD_RELAPSE_DATE`.
