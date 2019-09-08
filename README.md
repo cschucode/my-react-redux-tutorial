@@ -173,3 +173,14 @@ export function addRelapseDate(payload) {
 ```
 
 Because type value is a string and is common to typos and duplicates, we declare our action type as the constant variable `ADD_RELAPSE_DATE`.
+
+## A Quick Recap Before Moving Forward
+
+- The Redux **Store** is like a brain: it's in charge for orchestrating all the moving parts in Redux
+- The **State** of the application lives in a single immutable object within the **Store**
+- As soon as the **Store** receives an **Action**, it triggers a **Reducer**
+- The **Reducer** returns the next **State**
+
+The Reducer calculates the next state depending on the action type. It should also return the initial state when no action type matches. Switch statements are commonly used for handling action types and returning the appropriate
+
+When the action type matches a valid clause the reducer calculates the next state and returns a new object.
