@@ -51,7 +51,7 @@ The two presets we will use for this project are **@babel/preset-env** and **@ba
 
 `$ yarn add @babel/core babel-loader @babel/preset-env @babel/preset-react --dev`
 
-Now, we configure Babel in the **babel.rc** file.
+Now, we configure Babel in the **.babelrc** file.
 
 ```
 {
