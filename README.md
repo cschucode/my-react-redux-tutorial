@@ -148,7 +148,7 @@ export default rootReducer;
 
 This Reducer doesn't do anything yet but return the initial state. We'll return to refactor that soon to implement our Actions. **Spoiler Alert**... Actions are next.
 
-## Ready.. Set.. Actions!
+## Ready... Set... Actions!
 
 While the Store is where the state of the application lives and Reducers are what produce the state of the application, Actions our the signal to the Reducer on how to change state. Actions are simple JavaScript objects. Every action must contain a type property for describing how the state should change. They can also have a payload which is data needed for modifying the state.
 
@@ -185,7 +185,7 @@ The Reducer calculates the next state depending on the action type. It should al
 
 When the action type matches a valid clause the reducer calculates the next state and returns a new object.
 
-## Time to Refactor Our Reducer
+## Refactoring Our Reducer
 
 Open up **src/reducers/index.js** and update it as follows:
 
