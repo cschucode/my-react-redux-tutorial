@@ -214,3 +214,20 @@ export default rootReducer;
 ```
 
 **Redux protip:** the reducer will grow as your app will become bigger. You can split a big reducer into separate functions and combine them with **combineReducers**.
+
+## Redux Store Methods
+
+- getState for accessing the current state of an application
+- dispatch for dispatching an action
+- subscribe for listening on state changes
+
+## Connecting React with Redux
+
+Let's start by adding the **react-redux** library that connects React and Redux in an efficient way.
+
+`$ yarn add react-redux --dev`
+
+Once installed, the most important method you'll work with is **connect**. You will use connect with two or three arguments depending on the use case. The fundamental things to know are:
+
+- mapStateToProps connects parts of the Redux State to the React component
+- mapDispatchToProps connects Redux Actions to React Props
