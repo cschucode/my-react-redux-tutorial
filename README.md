@@ -231,3 +231,5 @@ Once installed, the most important method you'll work with is **connect**. You w
 
 - mapStateToProps connects parts of the Redux State to the React component
 - mapDispatchToProps connects Redux Actions to React Props
+
+But is **mapStateToProps** enough to connect our React component to our Redux Store. No it is not. For this, we're going to use a **Provider** which is a high order component from **react-redux**. The **Provider** wraps up your React application and makes it aware of the Redux Store.
