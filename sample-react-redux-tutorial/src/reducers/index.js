@@ -1,6 +1,6 @@
 import { ADD_RELAPSE_DATE } from '../actions/index';
 
-const initalState = {
+const initialState = {
   timeSober: null,
   relapses: [],
 };
@@ -14,7 +14,7 @@ function rootReducer(state = initialState, action) {
         relapses: state.relapses.concat(action.payload),
       });
     default:
-      return state;
+      return initialState;
   }
 };
 

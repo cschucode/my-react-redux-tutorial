@@ -223,7 +223,46 @@ export default rootReducer;
 
 ## Connecting React with Redux
 
-Let's start by adding the **react-redux** library that connects React and Redux in an efficient way.
+First, let's add our webpack HTML plugins and loaders.
+
+`$ yarn add webpack-html-plugin html-loader --dev`
+
+And update **webpack.config.js** as follows:
+
+```
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+  entry: "./src/index.js",
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader"
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html"
+    })
+  ]
+};
+```
+
+Next let's add the **react-redux** library that connects React and Redux in an efficient way.
 
 `$ yarn add react-redux --dev`
 
