@@ -203,7 +203,7 @@ function rootReducer(state = initialState, action) {
   switch(type) {
     case type === ADD_RELAPSE_DATE:
       return Object.assign({}, state, {
-          relapses: state.relapse.concat(action.payload),
+          relapses: state.relapses.concat(action.payload),
         });
     default:
       return state;
