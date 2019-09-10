@@ -320,8 +320,8 @@ Now that we have Redux connected to our React application, we can begin developi
 
 The components:
 
-- App will be the container where the rest of our components will live
-- DatePicker allows the user to select their sobriety date
-- TimeDisplay displays the length of time the user has been sober
-- RelapseList displays a list of dates the user relapsed
-- RelapseButton resets the sobriety to date to zero and starts the clean time counter over again
+- **App** will be the container where the rest of our components will live
+- **DatePicker** allows the user to select their sobriety date
+- **TimeDisplay** displays the length of time the user has been sober
+- **RelapseList** displays a list of dates the user relapsed
+- **RelapseButton** resets the sobriety to date to zero and starts the clean time counter over again
