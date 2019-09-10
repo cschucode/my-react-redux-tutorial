@@ -313,3 +313,15 @@ const store = createStore(
   devToolsEnhancer(/* custom devtool options */)
 );
 ```
+
+## It's Time to Build Our React components
+
+Now that we have Redux connected to our React application, we can begin developing our components. This app will be a simple sobriety tracker that allows the user to specify the day they got clean and receive the length of time they have been sober. There will also be a relapse button that resets the length of time they have been sober and puts the date into a list for future reference.
+
+The components:
+
+- App will be the container where the rest of our components will live
+- DatePicker allows the user to select their sobriety date
+- TimeDisplay displays the length of time the user has been sober
+- RelapseList displays a list of dates the user relapsed
+- RelapseButton resets the sobriety to date to zero and starts the clean time counter over again
