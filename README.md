@@ -289,3 +289,27 @@ ReactDOM.render(
   document.getElementById('app')
 );
 ```
+
+## But Wait There's More... Redux Dev Tools
+
+By installing a plugin to your browser of choice and importing the **redux-devtools-extension**, you have the ability to view that state of your application within the console.
+
+Browser Plugins for Redux Dev Tools:
+
+- [Chrome](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/)
+
+Then add the library to your project.
+
+`yarn add redux-devtools-extension --dev`
+
+There are a few different ways to connect the dev tools to your application. Since we won't be using enhancer or middleware, we'll take a straigtforward approach and use **devToolsEnhancer** in our **Store**.
+
+```
+import { devToolsEnhancer } from 'redux-devtools-extension';
+
+const store = createStore(
+  rootReducer,
+  devToolsEnhancer(/* custom devtool options */)
+);
+```
