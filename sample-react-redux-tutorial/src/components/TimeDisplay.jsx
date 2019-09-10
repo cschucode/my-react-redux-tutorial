@@ -7,7 +7,7 @@ const mapStateToProps = state => {
 
 const ConnectedTimeDisplay = ({ timeSober }) => (
   <div className="">
-    <h3>Clean Time</h3>
+    <h3>Clean</h3>
     <div>{timeSober}</div>
   </div>
 );

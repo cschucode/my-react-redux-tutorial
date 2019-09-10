@@ -4,7 +4,7 @@ import { updateTimeSober } from '../actions/index';
 
 function mapDispatchToProps(dispatch) {
   return {
-    updateTimeSober: timeSober => dispatch(updateTimeSober(timeSober)),
+    updateSobrietyDate: timeSober => dispatch(updateTimeSober(timeSober)),
   };
 };
 
@@ -12,17 +12,18 @@ class ConnectedDatePicker extends React.Component {
   constructor() {
     super();
 
-
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(el) {
     el.preventDefault();
 
-    console.log('VALUE::', el.target.value);
+    this.props.updateSobrietyDate(el.target.value);
+    el.target.value = "";
   }
 
   render() {
-    return <input onChange={this.handleChange} type="date" />;
+    return <input className="form-control" onChange={this.handleChange} type="date" />;
   }
 };
 

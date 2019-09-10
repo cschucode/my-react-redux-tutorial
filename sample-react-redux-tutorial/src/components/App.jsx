@@ -8,7 +8,7 @@ import TimeDisplay from './TimeDisplay.jsx';
 const App = () => (
   <div className="row text-center">
     <div className="col-md-4">
-      <h3>Sobriety Date</h3>
+      <h3>Sober</h3>
       <DatePicker />
     </div>
     <div className="col-md-4">
