@@ -262,9 +262,9 @@ module.exports = {
 };
 ```
 
-Next let's add the **react-redux** library that connects React and Redux in an efficient way.
+Next let's add the **react**, **react-redux** and **react-dom** libraries that connect React and Redux in an efficient way.
 
-`$ yarn add react-redux --dev`
+`$ yarn add react react-redux react-dom --dev`
 
 Once installed, the most important method you'll work with is **connect**. You will use connect with two or three arguments depending on the use case. The fundamental things to know are:
 
@@ -272,3 +272,20 @@ Once installed, the most important method you'll work with is **connect**. You w
 - mapDispatchToProps connects Redux Actions to React Props
 
 But is **mapStateToProps** enough to connect our React component to our Redux Store. No it is not. For this, we're going to use a **Provider** which is a high order component from **react-redux**. The **Provider** wraps up your React application and makes it aware of the Redux Store.
+
+Modify our **src/index.js** filename
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './src/store/index';
+import App from './src/components/App';
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+);
+```
