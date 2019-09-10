@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Moment from 'react-moment';
 
 const mapStateToProps = state => {
   return { timeSober: state.timeSober };
@@ -8,7 +9,7 @@ const mapStateToProps = state => {
 const ConnectedTimeDisplay = ({ timeSober }) => (
   <div className="">
     <h3>Clean</h3>
-    <div>{timeSober}</div>
+    <Moment fromNow ago>{timeSober}</Moment>
   </div>
 );
 

@@ -4,7 +4,7 @@ import {
 } from '../actions/index';
 
 const initialState = {
-  timeSober: 0,
+  timeSober: undefined,
   relapses: [],
 };
 
@@ -20,7 +20,7 @@ function rootReducer(state = initialState, action) {
     case ADD_RELAPSE_DATE:
       return Object.assign({}, state, {
         relapses: state.relapses.concat(action.payload),
-        timeSober: 0,
+        timeSober: new Date(),
       });
     default:
       return initialState;
