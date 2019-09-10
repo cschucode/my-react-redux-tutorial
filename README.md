@@ -325,3 +325,175 @@ The components:
 - **TimeDisplay** displays the length of time the user has been sober
 - **RelapseList** displays a list of dates the user relapsed
 - **RelapseButton** resets the sobriety to date to zero and starts the clean time counter over again
+
+### App.jsx
+
+```
+import React from 'react'
+
+import DatePicker from './DatePicker.jsx';
+import RelapseList from './RelapseList.jsx';
+import RelapseButton from './RelapseButton.jsx';
+import TimeDisplay from './TimeDisplay.jsx';
+
+const App = () => (
+  <div className="row">
+    <div className="col-md-4">
+      <h3>Sober</h3>
+      <DatePicker />
+    </div>
+    <div className="col-md-4">
+      <TimeDisplay />
+    </div>
+    <div className="col-md-4">
+      <h3>Relapses</h3>
+      <RelapseList />
+      <RelapseButton />
+    </div>
+  </div>
+);
+
+export default App;
+```
+
+### DatePicker.jsx
+
+```
+import React from 'react';
+import { connect } from 'react-redux';
+import { updateTimeSober } from '../actions/index';
+
+function mapDispatchToProps(dispatch) {
+  return {
+    updateSobrietyDate: timeSober => dispatch(updateTimeSober(timeSober)),
+  };
+};
+
+class ConnectedDatePicker extends React.Component {
+  constructor() {
+    super();
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(el) {
+    el.preventDefault();
+
+    this.props.updateSobrietyDate(el.target.value);
+    el.target.value = "";
+  }
+
+  render() {
+    return <input className="form-control" onChange={this.handleChange} type="date" />;
+  }
+};
+
+const DatePicker = connect(null, mapDispatchToProps)(ConnectedDatePicker);
+
+export default DatePicker;
+```
+
+### TimeDisplay.jsx
+
+```
+import React from 'react';
+import { connect } from 'react-redux';
+import Moment from 'react-moment';
+
+const mapStateToProps = state => {
+  return { timeSober: state.timeSober };
+};
+
+const ConnectedTimeDisplay = ({ timeSober }) => (
+  <div className="">
+    <h3>Clean</h3>
+    <Moment fromNow ago>{timeSober}</Moment>
+  </div>
+);
+
+const TimeDisplay = connect(mapStateToProps)(ConnectedTimeDisplay);
+
+export default TimeDisplay;
+```
+
+### RelapseButton.jsx
+
+```
+import React from 'react';
+import { connect } from 'react-redux';
+import { addRelapseDate } from '../actions/index';
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addRelapseDate: relapseDate => dispatch(addRelapseDate(relapseDate)),
+  };
+};
+
+const mapStateToProps = state => {
+  return { relapses: state.relapses };
+}
+
+class ConnectedRelapseButton extends React.Component {
+  constructor() {
+    super();
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    const d = new Date();
+    const relapseDate = { time: `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}` };
+
+    this.props.addRelapseDate(relapseDate);
+  }
+
+  render() {
+    return <button className="btn btn-sm btn-danger" onClick={this.handleClick}>Relapse</button>
+  }
+};
+
+const RelapseButton = connect(mapStateToProps, mapDispatchToProps)(ConnectedRelapseButton);
+
+export default RelapseButton;
+```
+
+### RelapseList.jsx
+
+```
+import React from 'react';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+  return { relapses: state.relapses };
+}
+
+const ConnectedRelapseList = ({ relapses }) => (
+  <ul className="list-group list-group-flush">
+    {relapses.map((relapse, idx) => (
+      <li className="list-group-item" key={idx}>
+        {relapse.time}
+      </li>
+    ))}
+  </ul>
+);
+
+const RelapseList = connect(mapStateToProps)(ConnectedRelapseList);
+
+export default RelapseList;
+```
+
+## Finishing Up
+
+So, there it is... our sobriety/relapse tracker. I hope this tutorial didn't drive you to drink, but if it did feel safe in knowing that with this app, you're in control.
+
+To see this app in action on your local machine, run the following command and navigate to [ http://localhost:8080/]( http://localhost:8080/).
+
+`$ yarn start`
+
+And if you decide to bundle for production, run
+
+`$ yarn build`
+
+And include the `dist` bundled file **main.js** in the **index.html** file of your app.
+
+Happy Coding!

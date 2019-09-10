@@ -6,7 +6,7 @@ import RelapseButton from './RelapseButton.jsx';
 import TimeDisplay from './TimeDisplay.jsx';
 
 const App = () => (
-  <div className="row text-center">
+  <div className="row">
     <div className="col-md-4">
       <h3>Sober</h3>
       <DatePicker />
