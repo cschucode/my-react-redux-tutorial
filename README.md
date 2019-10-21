@@ -482,11 +482,67 @@ const RelapseList = connect(mapStateToProps)(ConnectedRelapseList);
 export default RelapseList;
 ```
 
+## But Wait... Didn't You Forget About PropTypes?!
+
+Yes I did and let's explore that now. React offers a built in way of checking the types of props being used to avoid bugs in our code. Let's start by importing the **prop-types** library by adding the following line to our component files:
+
+`import PropTypes from 'prop-types';`
+
+And then using our **DatePicker.jsx** file as an example, declare the types of props you are using.
+
+**DatePicker.jsx**
+
+```
+import PropTypes from 'prop-types';
+import React from 'react';
+import { connect } from 'react-redux';
+import { updateTimeSober } from '../actions/index';
+
+function mapDispatchToProps(dispatch) {
+  return {
+    updateSobrietyDate: timeSober => dispatch(updateTimeSober(timeSober)),
+  };
+};
+
+class ConnectedDatePicker extends React.Component {
+  constructor() {
+    super();
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(el) {
+    el.preventDefault();
+
+    this.props.updateSobrietyDate(el.target.value);
+    el.target.value = "";
+  }
+
+  render() {
+    return <input className="form-control" onChange={this.handleChange} type="date" />;
+  }
+};
+
+ConnectedDatePicker.propTypes = {
+  updateSobrietyDate: PropTypes.func.isRequired
+};
+
+const DatePicker = connect(null, mapDispatchToProps)(ConnectedDatePicker);
+
+export default DatePicker;
+```
+
+By declaring the prop types on our datepicker, we've done two things one told our component that the prop `updateSobrietyDate` is a function and chained on the `isRequired` to ensure that our component always gets the information it needs to function correctly.
+
+Other Prop Types include strings, numbers, booleans, arrays, objects, and symbols. Plus, more you can dive deeper into at [React PropTypes Doc](https://reactjs.org/docs/typechecking-with-proptypes.html)
+
+
+
 ## Finishing Up
 
 So, there it is... our sobriety/relapse tracker. I hope this tutorial didn't drive you to drink, but if it did feel safe in knowing that with this app, you're in control.
 
-To see this app in action on your local machine, run the following command and navigate to [ http://localhost:8080/]( http://localhost:8080/).
+To see this app in action on your local machine, run the following command and navigate to [http://localhost:8080/]( http://localhost:8080/).
 
 `$ yarn start`
 
