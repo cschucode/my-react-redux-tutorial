@@ -201,7 +201,7 @@ function rootReducer(state = initialState, action) {
   const type = action type;
 
   switch(type) {
-    case type === ADD_RELAPSE_DATE:
+    case ADD_RELAPSE_DATE:
       return Object.assign({}, state, {
           relapses: state.relapses.concat(action.payload),
         });
