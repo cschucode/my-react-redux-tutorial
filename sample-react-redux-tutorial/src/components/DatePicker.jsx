@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateTimeSober } from '../actions/index';
@@ -25,6 +26,10 @@ class ConnectedDatePicker extends React.Component {
   render() {
     return <input className="form-control" onChange={this.handleChange} type="date" />;
   }
+};
+
+ConnectedDatePicker.propTypes = {
+  updateSobrietyDate: PropTypes.func.isRequired,
 };
 
 const DatePicker = connect(null, mapDispatchToProps)(ConnectedDatePicker);
