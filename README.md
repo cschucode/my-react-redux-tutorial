@@ -557,6 +557,91 @@ ConnectedRelapseButton.propTypes = {
 }
 ```
 
+## Hey What About Typescript?
+
+Typescript Indeed... but what is it? Typescript is a superset of JavaScript that provides optional static typing, classes and interfaces. It helps as you develop by adding a richer environment to your IDE for spotting typos and coding errors.
+
+First, let's add the dependencies.
+
+`$ yarn add @types/react @types/react-dom typescript ts-loader source-map-loader`
+
+Next let's add a **TypeScript** configuration file.
+
+**tsconfig.json**
+
+```
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "target": "es6",
+        "jsx": "react"
+    }
+}
+```
+
+And update our webpack config.
+
+```
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+  entry: "./src/index.js",
+
+  devtool: "source-map",
+
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
+      {
+          test: /\.ts(x?)$/,
+          exclude: /node_modules/,
+          use: [
+              {
+                  loader: "ts-loader"
+              }
+          ]
+      },
+      {
+          enforce: "pre",
+          test: /\.js$/,
+          loader: "source-map-loader"
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader"
+          }
+        ]
+      }
+    ]
+  },
+  externals: {
+      "react": "React",
+      "react-dom": "ReactDOM"
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html"
+    })
+  ]
+};
+```
+
+
+
+
+
 ## Finishing Up
 
 So, there it is... our sobriety/relapse tracker. I hope this tutorial didn't drive you to drink, but if it did feel safe in knowing that with this app, you're in control.

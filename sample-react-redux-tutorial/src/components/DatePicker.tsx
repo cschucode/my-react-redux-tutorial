@@ -3,20 +3,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateTimeSober } from '../actions/index';
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any) {
   return {
-    dispatchUpdateSobrietyDate: timeSober => dispatch(updateTimeSober(timeSober)),
+    dispatchUpdateSobrietyDate: (timeSober: string) => dispatch(updateTimeSober(timeSober)),
   };
 };
 
-class ConnectedDatePicker extends React.Component {
+interface DatePickerProps {
+  dispatchUpdateSobrietyDate: any;
+};
+
+class ConnectedDatePicker extends React.Component<DatePickerProps, {}> {
   constructor() {
     super();
 
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(el) {
+  handleChange(el: any) {
     el.preventDefault();
     const date = new Date(el.target.value).toUTCString();
     this.props.dispatchUpdateSobrietyDate(date);
@@ -25,10 +29,6 @@ class ConnectedDatePicker extends React.Component {
   render() {
     return <input className="form-control" onChange={this.handleChange} type="date" />;
   }
-};
-
-ConnectedDatePicker.propTypes = {
-  dispatchUpdateSobrietyDate: PropTypes.func.isRequired,
 };
 
 const DatePicker = connect(null, mapDispatchToProps)(ConnectedDatePicker);

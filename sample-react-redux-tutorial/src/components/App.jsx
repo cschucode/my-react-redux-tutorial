@@ -1,6 +1,6 @@
 import React from 'react'
 
-import DatePicker from './DatePicker.jsx';
+import DatePicker from './DatePicker.tsx';
 import RelapseList from './RelapseList.jsx';
 import RelapseButton from './RelapseButton.jsx';
 import TimeDisplay from './TimeDisplay.jsx';
