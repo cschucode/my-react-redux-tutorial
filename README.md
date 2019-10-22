@@ -524,7 +524,7 @@ class ConnectedDatePicker extends React.Component {
 };
 
 ConnectedDatePicker.propTypes = {
-  updateSobrietyDate: PropTypes.func.isRequired
+  updateSobrietyDate: PropTypes.func.isRequired,
 };
 
 const DatePicker = connect(null, mapDispatchToProps)(ConnectedDatePicker);
@@ -536,7 +536,26 @@ By declaring the prop types on our datepicker, we've done two things one told ou
 
 Other Prop Types include strings, numbers, booleans, arrays, objects, and symbols. Plus, more you can dive deeper into at [React PropTypes Doc](https://reactjs.org/docs/typechecking-with-proptypes.html)
 
+Now, let's add PropTypes to the remaining **TimeDisplay**, **RelapseButton**, and **RelapseList** components.
 
+**TimeDisplay.jsx**
+
+```
+ConnectedTimeDisplay.propTypes = {
+  timeSober: PropTypes.string,
+};
+```
+
+Notice we didn't use the `isRequired` here because this won't be provided until the user interacts with the DatePicker.
+
+**RelapseButton**
+
+```
+ConnectedRelapseButton.propTypes = {
+  addRelapseDate: PropTypes.func.isRequired,
+  relapses: PropTypes.array,
+}
+```
 
 ## Finishing Up
 

@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { addRelapseDate } from '../actions/index';
 
 function mapDispatchToProps(dispatch) {
   return {
-    addRelapseDate: relapseDate => dispatch(addRelapseDate(relapseDate)),
+    dispatchAddRelapseDate: relapseDate => dispatch(addRelapseDate(relapseDate)),
   };
 };
 
@@ -22,13 +23,17 @@ class ConnectedRelapseButton extends React.Component {
   handleClick() {
     const d = new Date();
     const relapseDate = { time: `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}` };
-
-    this.props.addRelapseDate(relapseDate);
+    this.props.dispatchAddRelapseDate(relapseDate);
   }
 
   render() {
     return <button className="btn btn-sm btn-danger" onClick={this.handleClick}>Relapse</button>
   }
+};
+
+ConnectedRelapseButton.propTypes = {
+  dispatchAddRelapseDate: PropTypes.func.isRequired,
+  relapses: PropTypes.array.isRequired,
 };
 
 const RelapseButton = connect(mapStateToProps, mapDispatchToProps)(ConnectedRelapseButton);

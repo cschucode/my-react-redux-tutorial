@@ -5,7 +5,7 @@ import { updateTimeSober } from '../actions/index';
 
 function mapDispatchToProps(dispatch) {
   return {
-    updateSobrietyDate: timeSober => dispatch(updateTimeSober(timeSober)),
+    dispatchUpdateSobrietyDate: timeSober => dispatch(updateTimeSober(timeSober)),
   };
 };
 
@@ -18,8 +18,8 @@ class ConnectedDatePicker extends React.Component {
 
   handleChange(el) {
     el.preventDefault();
-
-    this.props.updateSobrietyDate(el.target.value);
+    const date = new Date(el.target.value).toUTCString();
+    this.props.dispatchUpdateSobrietyDate(date);
     el.target.value = "";
   }
 
@@ -29,7 +29,7 @@ class ConnectedDatePicker extends React.Component {
 };
 
 ConnectedDatePicker.propTypes = {
-  updateSobrietyDate: PropTypes.func.isRequired,
+  dispatchUpdateSobrietyDate: PropTypes.func.isRequired,
 };
 
 const DatePicker = connect(null, mapDispatchToProps)(ConnectedDatePicker);

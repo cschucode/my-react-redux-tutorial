@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -14,6 +15,10 @@ const ConnectedRelapseList = ({ relapses }) => (
     ))}
   </ul>
 );
+
+ConnectedRelapseList.propTypes = {
+  relapses: PropTypes.array.isRequired,
+};
 
 const RelapseList = connect(mapStateToProps)(ConnectedRelapseList);
 
