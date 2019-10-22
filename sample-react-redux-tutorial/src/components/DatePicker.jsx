@@ -20,7 +20,6 @@ class ConnectedDatePicker extends React.Component {
     el.preventDefault();
     const date = new Date(el.target.value).toUTCString();
     this.props.dispatchUpdateSobrietyDate(date);
-    el.target.value = "";
   }
 
   render() {
