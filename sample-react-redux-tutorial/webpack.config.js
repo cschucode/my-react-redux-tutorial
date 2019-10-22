@@ -12,6 +12,20 @@ module.exports = {
         }
       },
       {
+          test: /\.ts(x?)$/,
+          exclude: /node_modules/,
+          use: [
+              {
+                  loader: "ts-loader"
+              }
+          ]
+      },
+      {
+          enforce: "pre",
+          test: /\.js$/,
+          loader: "source-map-loader"
+      },
+      {
         test: /\.html$/,
         use: [
           {
@@ -20,6 +34,10 @@ module.exports = {
         ]
       }
     ]
+  },
+  externals: {
+      "react": "React",
+      "react-dom": "ReactDOM"
   },
   plugins: [
     new HtmlWebPackPlugin({
