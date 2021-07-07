@@ -572,3 +572,5 @@ And if you decide to bundle for production, run
 And include the `dist` bundled file **main.js** in the **index.html** file of your app.
 
 Happy Coding!
+
+Would love to hear what you thought of this tutorial. Opening a PR for comments/feedback.
